@@ -39,11 +39,11 @@ class MainActivity : AppCompatActivity() {
             var firstname=etFirstNumber.text.toString()
             var secondname=etSecondNumber.text.toString()
             if(firstname.isBlank()){
-                etFirstNumber.setError("Weight is required")
+                etFirstNumber.setError("first number is required")
                 return@setOnClickListener
             }
             if(secondname.isBlank()){
-                etSecondNumber.setError("height is required")
+                etSecondNumber.setError("second numberis required")
                 return@setOnClickListener
             }
             Add(firstnumb.toInt(), secondnumb.toInt())
@@ -57,11 +57,11 @@ class MainActivity : AppCompatActivity() {
             var firstname=etFirstNumber.text.toString()
         var secondname=etSecondNumber.text.toString()
             if(firstname.isBlank()){
-                etFirstNumber.setError("Weight is required")
+                etFirstNumber.setError("first number  is required")
                 return@setOnClickListener
             }
             if(secondname.isBlank()){
-                etSecondNumber.setError("height is required")
+                etSecondNumber.setError("second number is required")
                 return@setOnClickListener
             }
             Division(firstnumb.toInt(), secondnumb.toInt())
@@ -77,11 +77,11 @@ class MainActivity : AppCompatActivity() {
             var firstname=etFirstNumber.text.toString()
             var secondname=etSecondNumber.text.toString()
             if(firstname.isBlank()){
-                etFirstNumber.setError("Weight is required")
+                etFirstNumber.setError("first numberis required")
                 return@setOnClickListener
             }
             if(secondname.isBlank()){
-                etSecondNumber.setError("height is required")
+                etSecondNumber.setError("second number is required")
                 return@setOnClickListener
             }
             Modulus(firstnumb.toInt(), secondnumb.toInt())
@@ -96,11 +96,11 @@ class MainActivity : AppCompatActivity() {
             var firstname=etFirstNumber.text.toString()
             var secondname=etSecondNumber.text.toString()
             if(firstname.isBlank()){
-                etFirstNumber.setError("Weight is required")
+                etFirstNumber.setError("first number is required")
                 return@setOnClickListener
             }
             if(secondname.isBlank()){
-                etSecondNumber.setError("height is required")
+                etSecondNumber.setError("second number is required")
                 return@setOnClickListener
             }
             Subtraction(firstnumb.toInt(), secondnumb.toInt())
