@@ -34,6 +34,18 @@ class MainActivity : AppCompatActivity() {
         btnAdd.setOnClickListener {
             var firstnumb=etFirstNumber.text.toString()
             var secondnumb=etSecondNumber.text.toString()
+
+
+            var firstname=etFirstNumber.text.toString()
+            var secondname=etSecondNumber.text.toString()
+            if(firstname.isBlank()){
+                etFirstNumber.setError("Weight is required")
+                return@setOnClickListener
+            }
+            if(secondname.isBlank()){
+                etSecondNumber.setError("height is required")
+                return@setOnClickListener
+            }
             Add(firstnumb.toInt(), secondnumb.toInt())
 
 
@@ -42,6 +54,16 @@ class MainActivity : AppCompatActivity() {
         btnDivide.setOnClickListener {
             var firstnumb=etFirstNumber.text.toString()
             var secondnumb=etSecondNumber.text.toString()
+            var firstname=etFirstNumber.text.toString()
+        var secondname=etSecondNumber.text.toString()
+            if(firstname.isBlank()){
+                etFirstNumber.setError("Weight is required")
+                return@setOnClickListener
+            }
+            if(secondname.isBlank()){
+                etSecondNumber.setError("height is required")
+                return@setOnClickListener
+            }
             Division(firstnumb.toInt(), secondnumb.toInt())
 
 
@@ -50,6 +72,18 @@ class MainActivity : AppCompatActivity() {
         btnModulus.setOnClickListener {
             var firstnumb=etFirstNumber.text.toString()
             var secondnumb=etSecondNumber.text.toString()
+
+
+            var firstname=etFirstNumber.text.toString()
+            var secondname=etSecondNumber.text.toString()
+            if(firstname.isBlank()){
+                etFirstNumber.setError("Weight is required")
+                return@setOnClickListener
+            }
+            if(secondname.isBlank()){
+                etSecondNumber.setError("height is required")
+                return@setOnClickListener
+            }
             Modulus(firstnumb.toInt(), secondnumb.toInt())
 
         }
@@ -57,6 +91,18 @@ class MainActivity : AppCompatActivity() {
         btnSubtract.setOnClickListener {
             var firstnumb=etFirstNumber.text.toString()
             var secondnumb=etSecondNumber.text.toString()
+
+
+            var firstname=etFirstNumber.text.toString()
+            var secondname=etSecondNumber.text.toString()
+            if(firstname.isBlank()){
+                etFirstNumber.setError("Weight is required")
+                return@setOnClickListener
+            }
+            if(secondname.isBlank()){
+                etSecondNumber.setError("height is required")
+                return@setOnClickListener
+            }
             Subtraction(firstnumb.toInt(), secondnumb.toInt())
 
         }
@@ -81,17 +127,9 @@ class MainActivity : AppCompatActivity() {
         tvAnswer.text=add.toString()
 
 
+
     }
-//    fun validate(){
-//        var firstname=etFirstNumber.text.toString()
-//        var secondname=etSecondNumber.text.toString()
-//        if (firstname.isBlank()) {
-//            tilFirstNUmber.error = "First number required"
-//        }
-//        if (secondname.isBlank()) {
-//            tilFirstNUmber.error = "Second name required"
-//        }
-//    }
+
 
 
 
