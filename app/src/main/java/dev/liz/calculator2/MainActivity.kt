@@ -33,7 +33,6 @@ class MainActivity : AppCompatActivity() {
         btnAdd=findViewById(R.id.btnAdd)
         btnAdd.setOnClickListener {
             var firstnumb=etFirstNumber.text.toString()
-
             var secondnumb=etSecondNumber.text.toString()
             Add(firstnumb.toInt(), secondnumb.toInt())
 
@@ -44,6 +43,7 @@ class MainActivity : AppCompatActivity() {
             var firstnumb=etFirstNumber.text.toString()
             var secondnumb=etSecondNumber.text.toString()
             Division(firstnumb.toInt(), secondnumb.toInt())
+
 
         }
         btnModulus=findViewById(R.id.btnModulus)
@@ -79,6 +79,7 @@ class MainActivity : AppCompatActivity() {
     fun Subtraction(firstnumb:Int,secondnumb:Int){
         var add=firstnumb-secondnumb
         tvAnswer.text=add.toString()
+
 
     }
 //    fun validate(){
