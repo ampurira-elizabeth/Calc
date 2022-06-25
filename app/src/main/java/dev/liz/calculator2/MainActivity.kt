@@ -34,6 +34,8 @@ class MainActivity : AppCompatActivity() {
         }
      data class Inputs(var firstnum:Double,var secondnum:Double)
     fun obtainInput():Inputs?{
+        binding.tilFirstNumber.error=null
+        binding.tilSecondNumber.error=null
         val firstnumb=binding.etFirstNumber.text.toString()
         val secondnumb=binding.etSecondNumber.text.toString()
         var error=false
