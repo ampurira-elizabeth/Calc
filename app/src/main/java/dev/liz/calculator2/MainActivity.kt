@@ -24,7 +24,6 @@ class MainActivity : AppCompatActivity() {
             }
             binding.btnDivision.setOnClickListener {
                     Division(obtainInput())
-
             }
             binding.btnModulus.setOnClickListener {
                     Modulus(obtainInput())
@@ -32,7 +31,6 @@ class MainActivity : AppCompatActivity() {
             binding.btnSubtract.setOnClickListener {
                     Subtraction(obtainInput())
                 }
-
         }
      data class Inputs(var firstnum:Double,var secondnum:Double)
     fun obtainInput():Inputs?{
@@ -56,24 +54,27 @@ class MainActivity : AppCompatActivity() {
     }
     fun Add(inputs: Inputs?){
         if (inputs!=null) {
-            var add = inputs.firstnum + inputs.secondnum
-            binding.tvAnswer.text = add.toString()
+//            var add = inputs.firstnum + inputs.secondnum
+            displayResults(inputs.firstnum + inputs.secondnum)
         }
     }
     fun Division(inputs: Inputs?){
         if (inputs!=null) {
-            var add = inputs.firstnum / inputs.secondnum
-            binding.tvAnswer.text = add.toString()
+//            var add = inputs.firstnum / inputs.secondnum
+           displayResults(inputs.firstnum / inputs.secondnum)
         }
     }
     fun Modulus(inputs: Inputs?){
         if (inputs!=null){
-            var add= inputs.firstnum % inputs.secondnum
-        binding.tvAnswer.text=add.toString()}
+//            var add= inputs.firstnum / inputs.secondnum
+       displayResults( inputs.firstnum / inputs.secondnum)}
     }
     fun Subtraction(inputs: Inputs?){
         if (inputs!=null){
-            var add=inputs.firstnum - inputs.secondnum
-        binding.tvAnswer.text=add.toString()}
+//            var add=inputs.firstnum - inputs.secondnum
+       displayResults(inputs.firstnum - inputs.secondnum)
+        }
  }
-}
+    fun displayResults(add:Double){
+        binding.tvAnswer.text=add.toString()}
+    }
