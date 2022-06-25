@@ -6,131 +6,138 @@ import android.widget.Button
 import android.widget.TextView
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import dev.liz.calculator2.databinding.ActivityMainBinding
 import javax.security.auth.Subject
 
 class MainActivity : AppCompatActivity() {
-    lateinit var btnAdd:Button
-    lateinit var btnSubtract:Button
-    lateinit var btnDivide:Button
-    lateinit var btnModulus:Button
-    lateinit var tilFirstNUmber:TextInputLayout
-    lateinit var tilSecondNumber:TextInputLayout
-    lateinit var etFirstNumber:TextInputEditText
-    lateinit var etSecondNumber:TextInputEditText
-    lateinit var tvAnswer:TextView
+    lateinit var  binding:ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        tilFirstNUmber=findViewById(R.id.tilFirstNumber)
-        tilSecondNumber=findViewById(R.id.tilSecondNumber)
-        etFirstNumber=findViewById(R.id.etFirstNumber)
-        etSecondNumber=findViewById(R.id.etSecondNumber)
-        tvAnswer=findViewById(R.id.tvAnswer)
-
-
-
-
-        btnAdd=findViewById(R.id.btnAdd)
-        btnAdd.setOnClickListener {
-            var firstnumb=etFirstNumber.text.toString()
-            var secondnumb=etSecondNumber.text.toString()
-
-
-            var firstname=etFirstNumber.text.toString()
-            var secondname=etSecondNumber.text.toString()
-            if(firstname.isBlank()){
-                etFirstNumber.setError("first number is required")
-                return@setOnClickListener
-            }
-            if(secondname.isBlank()){
-                etSecondNumber.setError("second numberis required")
-                return@setOnClickListener
-            }
-            Add(firstnumb.toInt(), secondnumb.toInt())
-
-
-        }
-        btnDivide=findViewById(R.id.btnDivision)
-        btnDivide.setOnClickListener {
-            var firstnumb=etFirstNumber.text.toString()
-            var secondnumb=etSecondNumber.text.toString()
-            var firstname=etFirstNumber.text.toString()
-        var secondname=etSecondNumber.text.toString()
-            if(firstname.isBlank()){
-                etFirstNumber.setError("first number  is required")
-                return@setOnClickListener
-            }
-            if(secondname.isBlank()){
-                etSecondNumber.setError("second number is required")
-                return@setOnClickListener
-            }
-            Division(firstnumb.toInt(), secondnumb.toInt())
+    binding= ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        handleclick()
+//
+//        binding.btnAdd.setOnClickListener {
+//            var firstnumb= binding.etFirstNumber.text.toString()
+//            var secondnumb=binding.etSecondNumber.text.toString()
+//            if(firstnumb.isBlank()){
+//                binding.etFirstNumber.setError("first number is required")
+//                return@setOnClickListener
+//            }
+//            if(secondnumb.isBlank()){
+//                binding.etSecondNumber.setError("second numberis required")
+//                return@setOnClickListener
+//            }
+//            Add(firstnumb.toInt(), secondnumb.toInt())
+//
+//
+//        }
+//                 binding.btnDivision.setOnClickListener {
+//            var firstnumb= binding.etFirstNumber.text.toString()
+//            var secondnumb=binding.etSecondNumber.text.toString()
+//            if(firstnumb.isBlank()){
+//               binding. etFirstNumber.setError("first number  is required")
+//                return@setOnClickListener
+//            }
+//            if(secondnumb.isBlank()){
+//                binding.etSecondNumber.setError("second number is required")
+//                return@setOnClickListener
+//            }
+//            Division(firstnumb.toInt(), secondnumb.toInt())
 
 
         }
-        btnModulus=findViewById(R.id.btnModulus)
-        btnModulus.setOnClickListener {
-            var firstnumb=etFirstNumber.text.toString()
-            var secondnumb=etSecondNumber.text.toString()
-
-
-            var firstname=etFirstNumber.text.toString()
-            var secondname=etSecondNumber.text.toString()
-            if(firstname.isBlank()){
-                etFirstNumber.setError("first numberis required")
-                return@setOnClickListener
+        fun  handleclick(){
+            binding.btnAdd.setOnClickListener {
+                var inputs=obtainInput()
+                if(inputs!=null){
+                    Add(inputs.firstnum,inputs.secondnum)
+                }
             }
-            if(secondname.isBlank()){
-                etSecondNumber.setError("second number is required")
-                return@setOnClickListener
+            binding.btnDivision.setOnClickListener {
+                var inputs=obtainInput()
+                if(inputs!=null){
+                    Subtraction(inputs.firstnum,inputs.secondnum)
+                }
             }
-            Modulus(firstnumb.toInt(), secondnumb.toInt())
+            binding.btnModulus.setOnClickListener {
+                var inputs=obtainInput()
+                if(inputs!=null){
+                    Division(inputs.firstnum,inputs.secondnum)
+                }
+            }
+            binding.btnSubtract.setOnClickListener {
+                var inputs=obtainInput()
+                if(inputs!=null){
+                    Modulus(inputs.firstnum,inputs.secondnum)
+                }
+            }
+        }
+     data class Inputs(var firstnum:Double,var secondnum:Double)
+    fun obtainInput():Inputs?{
+        val firstnumb=binding.etFirstNumber.text.toString()
+        val secondnumb=binding.etSecondNumber.text.toString()
+        var error=false
+        if(firstnumb.isBlank()) {
+            binding.tilFirstNumber.error="first number required"
+            error=true
+        }
+        if(secondnumb.isBlank()) {
+            binding.tilSecondNumber.error="second number required"
+            error=true
+        }
+        if (!error){
+            return Inputs(firstnumb.toDouble(),secondnumb.toDouble())
 
         }
-        btnSubtract=findViewById(R.id.btnSubtract)
-        btnSubtract.setOnClickListener {
-            var firstnumb=etFirstNumber.text.toString()
-            var secondnumb=etSecondNumber.text.toString()
 
-
-            var firstname=etFirstNumber.text.toString()
-            var secondname=etSecondNumber.text.toString()
-            if(firstname.isBlank()){
-                etFirstNumber.setError("first number is required")
-                return@setOnClickListener
-            }
-            if(secondname.isBlank()){
-                etSecondNumber.setError("second number is required")
-                return@setOnClickListener
-            }
-            Subtraction(firstnumb.toInt(), secondnumb.toInt())
-
-        }
-
+        return null
     }
-    fun Add(firstnumb:Int,secondnumb:Int){
+
+
+//        binding.btnModulus.setOnClickListener {
+//            var firstnumb=binding.etFirstNumber.text.toString()
+//            var secondnumb=binding.etSecondNumber.text.toString()
+//            if(firstnumb.isBlank()){
+//                binding.etFirstNumber.setError("first numberis required")
+//                return@setOnClickListener
+//            }
+//            if(secondnumb.isBlank()){
+//                binding.etSecondNumber.setError("second number is required")
+//                return@setOnClickListener
+//            }
+//            Modulus(firstnumb.toInt(), secondnumb.toInt())
+//        }
+//       binding. btnSubtract.setOnClickListener {
+//            var firstnumb=binding.etFirstNumber.text.toString()
+//            var secondnumb=binding.etSecondNumber.text.toString()
+//            if(firstnumb.isBlank()){
+//                binding.etFirstNumber.setError("first number is required")
+//                return@setOnClickListener
+//            }
+//            if(secondnumb.isBlank()){
+//                binding.etSecondNumber.setError("second number is required")
+//                return@setOnClickListener
+//            }
+//            Subtraction(firstnumb.toInt(), secondnumb.toInt())
+//
+//        }
+
+//    }
+    fun Add(firstnumb:Double,secondnumb:Double){
         var add=firstnumb+secondnumb
-        tvAnswer.text=add.toString()
-
-
+        binding.tvAnswer.text=add.toString()
     }
-    fun Division(firstnumb:Int,secondnumb:Int){
+    fun Division(firstnumb:Double,secondnumb:Double){
         var add=firstnumb/secondnumb
-        tvAnswer.text=add.toString()
+        binding.tvAnswer.text=add.toString()
     }
-    fun Modulus(firstnumb:Int,secondnumb:Int){
+    fun Modulus(firstnumb:Double,secondnumb:Double){
         var add=firstnumb%secondnumb
-        tvAnswer.text=add.toString()
+        binding.tvAnswer.text=add.toString()
     }
-    fun Subtraction(firstnumb:Int,secondnumb:Int){
+    fun Subtraction(firstnumb:Double,secondnumb:Double){
         var add=firstnumb-secondnumb
-        tvAnswer.text=add.toString()
-
-
-
-    }
-
-
-
-
+        binding.tvAnswer.text=add.toString()
+ }
 }
